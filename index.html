@@ -341,7 +341,7 @@ function render() {
   const q = document.getElementById("search").value.toLowerCase();
   const tf = document.getElementById("terms-filter").value;
   const list = customers.filter(c => {
-    const haystack = [c["Company Name"],c["Contact Name"],c["Phone"],c["Email"],c["Notes"]].join(" ").toLowerCase();
+    const haystack = [c["Company Name"],c["Contact Name"],c["Phone"],c["Email"],c["Billing Address"],c["Notes"]].join(" ").toLowerCase();
     return haystack.includes(q) && (!tf || c["Payment Terms"] === tf);
   });
 
@@ -378,6 +378,10 @@ function render() {
         <div class="card-row">
           <span class="card-row-label">Email</span>
           <span class="card-row-val">${c["Email"] || "—"}</span>
+        </div>
+        <div class="card-row">
+          <span class="card-row-label">Billing Address</span>
+          <span class="card-row-val">${c["Billing Address"] || "—"}</span>
         </div>
         <div class="card-row">
           <span class="card-row-label">Credit limit</span>
